@@ -26,12 +26,24 @@ def names_with_special_characters() -> int:
     return count
 
 
-def  breed_pokemons()-> int:
+def breed_pokemons()-> int:
     """
     Return how many pokemon can breed with Raichu, two pokemons
     can breed if they belong to the same egg group.
     """
-    pass
+    pokemon = "raichu"
+    response_specie = requests.get(f'https://pokeapi.co/api/v2/pokemon-species/{pokemon}')
+    egg_groups = response_specie.json()["egg_groups"]
+
+    pokemons_can_breed = []
+    for egg_group in egg_groups:
+        response_group = requests.get(egg_group["url"])
+        pokemons_specie = response_group.json()["pokemon_species"]
+        for pokemon_specie in pokemons_specie:
+            pokemons_can_breed.append(pokemon_specie["name"])
+    
+    # print (pokemons_can_breed)
+    return len(set(pokemons_can_breed))
 
 
 def get_max_and_min_weight() -> list:
