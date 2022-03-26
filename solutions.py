@@ -1,30 +1,10 @@
-import requests
 from time import time
-BASE_URL = "https://pokeapi.co/api/v2/"
 
-class RequestError(Exception):
-    """
-    Raise this error when the request fails.
+from request_error import RequestError
+from requests_api import api_response
+from helpers import get_id
 
-    Attributes:
-        status_code -- input salary which caused the error
-        message -- explanation of the error
-    """
-    def __init__(self, status_code, url, message = "Error in the request for url"):
-        self.status_code = status_code
-        self.message = message + ": {}".format(url)
-        super().__init__(self.message)
-
-
-def api_response(url) -> dict or str:
-    """
-    Return the response of the api in json format.
-    """
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        raise RequestError(response.status_code, url)
+__BASE_URL = "https://pokeapi.co/api/v2/"
 
 
 def names_with_special_characters() -> int:
@@ -37,11 +17,11 @@ def names_with_special_characters() -> int:
     """
     count = 0
     # requests
-    url_one_pokemon = BASE_URL + "pokemon?limit=1"
+    url_one_pokemon = __BASE_URL + "pokemon?limit=1"
     limit = api_response(url_one_pokemon)['count']
     
     # requests
-    url_all_pokemon = BASE_URL + f"pokemon?limit={limit}"
+    url_all_pokemon = __BASE_URL + f"pokemon?limit={limit}"
     pokemons = api_response(url_all_pokemon)['results']
 
     for pokemon in pokemons:
@@ -58,7 +38,7 @@ def breed_pokemons()-> int:
     """
     pokemon = "raichu"
     # requests
-    url_pokemon_specie = BASE_URL + f"pokemon-species/{pokemon}"
+    url_pokemon_specie = __BASE_URL + f"pokemon-species/{pokemon}"
     egg_groups = api_response(url_pokemon_specie)["egg_groups"]
 
     pokemons_can_breed = []
@@ -75,11 +55,6 @@ def breed_pokemons()-> int:
     return len(pokemons_can_breed_uniq)
 
 
-def get_id(url) -> int:
-    """write a function that returns the id of a pokemon"""
-    return int(url.split('/')[-2])
-
-
 def get_max_and_min_weight() -> list:
     """
     Return the max and min weight of fighting type pokemon of the first generation
@@ -87,7 +62,7 @@ def get_max_and_min_weight() -> list:
     """
     pokemon_type = "fighting"
     # requests
-    url_pokemon_type = BASE_URL + f"type/{pokemon_type}"
+    url_pokemon_type = __BASE_URL + f"type/{pokemon_type}"
     fighting_pokemons = api_response(url_pokemon_type)["pokemon"]
 
     weigths = []
@@ -103,21 +78,3 @@ def get_max_and_min_weight() -> list:
     min_weight = min(weigths)
 
     return [max_weight, min_weight]
-
-start_time = time()
-try:
-    first_answer = names_with_special_characters()
-    second_answer = breed_pokemons()
-    third_answer = get_max_and_min_weight()
-except KeyboardInterrupt:
-    print("\nYou pressed Ctrl+C. Exiting...")
-except RequestError as error:
-    print(f"\n{error}")
-    print("\nTry again...")
-else:
-    print(f"There are {first_answer} pokemon names with 'at' and double 'a'.")
-    print(f"There are {second_answer} pokemon that can breed with Raichu.")
-    print(f"The max and min weight of fighting type pokemon are {third_answer}.")
-elapsed_time = time() - start_time
-
-print("Elapsed time1: %.10f seconds" % elapsed_time)
