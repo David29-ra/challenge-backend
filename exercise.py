@@ -6,7 +6,7 @@ def first():
     """
     This function will print the result of the first exercise.
     """
-    answer = names_with_special_characters()
+    answer = names_with_at_and_double_a()
     print(f"There are {answer} pokemons names with 'at' and double 'a'.")
 
 

@@ -6,7 +6,7 @@ from requests_module.request_error import RequestError
 start_time = time()
 
 try:
-    first_answer = names_with_special_characters()
+    first_answer = names_with_at_and_double_a()
     second_answer = breed_pokemons()
     third_answer = get_max_and_min_weight()
 except KeyboardInterrupt:

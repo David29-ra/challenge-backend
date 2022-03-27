@@ -1,12 +1,10 @@
-from time import time
-
 from requests_module.requests_api import api_response
 from helpers import get_id
 
 __BASE_URL = "https://pokeapi.co/api/v2/"
 
 
-def names_with_special_characters() -> int:
+def names_with_at_and_double_a() -> int:
     """
     Return how many pokemon names that contain 'at' and double 'a'.
     latias: it should be included in the count because
