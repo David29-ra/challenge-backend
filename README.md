@@ -34,7 +34,7 @@ pip install -r requirements.txt
 ## Comandos
 1. para ver los 3 resultados (primera segunda y tercera pregunta), correr el comando:
 ```
-python3 functions.py
+python3 main.py
 ```
 2. para ver el resultado de cada pregunra por separado, correr el comando:
 
