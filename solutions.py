@@ -1,6 +1,5 @@
 from time import time
 
-from request_error import RequestError
 from requests_api import api_response
 from helpers import get_id
 
