@@ -3,16 +3,25 @@ import sys
 from functions import *
 
 def first():
+    """
+    This function will print the result of the first exercise.
+    """
     answer = names_with_special_characters()
     print(f"There are {answer} pokemons names with 'at' and double 'a'.")
 
 
 def second():
+    """
+    This function will print the result of the second exercise.
+    """
     answer = breed_pokemons()
     print(f"There are {answer} pokemons that can breed with Raichu.")
 
 
 def third():
+    """
+    This function will print the result of the third exercise.
+    """
     answer = get_max_and_min_weight()
     print(f"The max and min weight of fighting type pokemon are {answer}.")
 
