@@ -1,6 +1,6 @@
 # Challenge Software Engineer Backend
 
-Para el Challenge Software Engineer Backend, se utilizo los siguientes paquetes de pip:
+Para el Challenge Software Engineer Backend, se utilizo los siguientes paquetes de pip for Python 3.8.10:
 
     * Requests -> 2.27.1
     * Pytest -> 7.1.1
