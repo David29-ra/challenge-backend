@@ -1,6 +1,6 @@
 import requests
 
-from request_error import RequestError
+from requests_module.request_error import RequestError
 
 def api_response(url) -> dict or str:
     """
@@ -11,4 +11,3 @@ def api_response(url) -> dict or str:
         return response.json()
     else:
         raise RequestError(response.status_code, url)
-        

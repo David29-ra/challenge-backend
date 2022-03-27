@@ -1,7 +1,7 @@
 from time import time
 
-from solutions import *
-from request_error import RequestError
+from functions import *
+from requests_module.request_error import RequestError
 
 start_time = time()
 
