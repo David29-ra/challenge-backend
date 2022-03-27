@@ -37,8 +37,14 @@ try:
     func = switcher[argvs[1]]
     func()
 except KeyError:
+    print("Please, enter a valid number of the exercise.")
+    print("1. names_with_at_and_double_a")
+    print("2. breed_pokemons")
+    print("3. get_max_and_min_weight")
+except IndexError:
     print("Please, enter the number of the exercise.")
-    print("1. names_with_special_characters")
+    print("ex: python3 exercise.py 1")
+    print("\n1. names_with_at_and_double_a")
     print("2. breed_pokemons")
     print("3. get_max_and_min_weight")
 
